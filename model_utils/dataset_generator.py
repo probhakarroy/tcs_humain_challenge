@@ -4,7 +4,7 @@ import tqdm, json, os
 import tensorflow as tf
 
 def create() :
-  fo = open('../Face_Recognition.json')
+  fo = open('./Face_Recognition.json')
   data = []
   for datapoint in fo:
     data.append(json.loads(datapoint))
@@ -32,12 +32,12 @@ def create() :
   for i in tqdm.tqdm(range(len(links))) :
     res = requests.get(links[i])
     res.raise_for_status()
-    fo = open('../dataset/' + str(i) + '.jpg', 'wb')
+    fo = open('./dataset/' + str(i) + '.jpg', 'wb')
     for chunks in res.iter_content(1000000) :
       fo.write(chunks)
     fo.close()
 
-    img = tf.io.read_file('../dataset/' + str(i) + '.jpg')
+    img = tf.io.read_file('./dataset/' + str(i) + '.jpg')
     try:
       img = tf.image.decode_image(img, channels=3)
     except:
