@@ -24,7 +24,7 @@ def create() :
   re_labels = []
   
   try :
-    os.mkdir('../dataset')
+    os.mkdir('./dataset')
   except :
     print('dataset directory already exist!')
 
