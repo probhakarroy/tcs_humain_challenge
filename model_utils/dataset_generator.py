@@ -22,7 +22,12 @@ def create() :
   #image downloading path
   images = []
   re_labels = []
-  os.mkdir('../dataset')
+  
+  try :
+    os.mkdir('../dataset')
+  except :
+    print('dataset directory already exist!')
+
   print('\nDownloading the images and converting them tf tensors:-')
   for i in tqdm.tqdm(range(len(links))) :
     res = requests.get(links[i])
