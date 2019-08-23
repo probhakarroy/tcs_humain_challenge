@@ -83,7 +83,7 @@ model.compile(optimizer=tf.keras.optimizers.Adam(), loss = 'categorical_crossent
 
 if args.evaluate :
     #evaluate model with best learned weights
-    model.load_weights('./model_data/weights/weights-21.h5')
+    model.load_weights('./model_data/weights/weights-50.h5')
     model.evaluate(test_batches)
 else :
     #training the model
