@@ -6,7 +6,11 @@ import os, argparse
 
 #argument parsers
 parser = argparse.ArgumentParser(description='Multi-Task Learning Network.')
-parser.add_argument('evaluate', help = 'Evaluate the model : True/False [DEFAULT : True]', type = bool, default = True)
+parser.add_argument('--evaluate', help='Evaluate the model.',
+                    dest='evaluate', action='store_true')
+parser.add_argument('--train', help='Train the model.',
+                    dest='evaluate', action='store_false')
+parser.set_defaults(evaluate=True)
 args = parser.parse_args()
 
 
