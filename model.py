@@ -1,23 +1,36 @@
 #env/bin/python
 
-import tensorflow as tf
-from model_utils import dataset_generator
 import os, argparse, warnings
-
 #filtering tensorflow future warnings
 warnings.filterwarnings("ignore")
 
+import tensorflow as tf
+from model_utils import dataset_generator, image_downloader
+import matplotlib.pyplot as plt
+
+
 #argument parsers
-parser = argparse.ArgumentParser(description='Multi-Task Learning Network.')
-parser.add_argument('--evaluate', help='Evaluate the model.',
-                    dest='evaluate', action='store_true')
-parser.add_argument('--train', help='Train the model.',
-                    dest='evaluate', action='store_false')
-parser.set_defaults(evaluate=True)
+parser = argparse.ArgumentParser(description = 'Multi-Task Learning Network.')
+parser.add_argument('--predict', help = 'Use the model to predict an image from url.',
+                    dest = 'predict', action = 'store_true')
+parser.add_argument('--evaluate', help = 'Evaluate the model.',
+                    dest = 'evaluate', action = 'store_true')
+parser.add_argument('--train', help = 'Train the model.',
+                    dest = 'evaluate', action = 'store_false')
+parser.set_defaults(predict = True, evaluate = False)
 args = parser.parse_args()
 
-
-train_batches, validation_batches, test_batches = dataset_generator.create()
+if args.predict :
+    img = input('Enter Image Url : ')
+    img = image_downloader.url(img)
+    emotion_label = {0: 'Emotion_Neutral', 1: 'Not_Face',
+                     2: 'Emotion_Sad', 3: 'Emotion_Angry', 4: 'Emotion_Happy'}
+    age_label = {0: 'Age_above_50', 1: 'Age_30_40', 2: 'Age_20_30',
+                 3: 'Age_40_50', 4: 'Age_below20', 5: 'others'}
+    ethinicity_label = {0: 'E_Hispanic', 1: 'E_White',
+                        2: 'E_Black', 3: 'E_Asian', 4: 'E_Indian', 5: 'others'}
+else :
+    train_batches, validation_batches, test_batches = dataset_generator.create()
 
 
 #multi-task learning model
@@ -78,7 +91,20 @@ lr_decay = tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', verbose = 1,
 #compiling the model
 model.compile(optimizer=tf.keras.optimizers.Adam(), loss = 'categorical_crossentropy', metrics = ['accuracy'])
 
-if args.evaluate :
+if args.predict and not args.evaluate :
+    #model prediction
+    model.load_weights('./model_data/weights/weights-50.h5')
+    pred = model.predict(img)
+
+    #ploting the image
+    plt.imshow(img)
+    plt.show()
+
+    #prediction
+    print('Prediction :-\n\tpredicted emotion : {}\n\tpredicted age : {}\n\tpredicted ethinicity : {}\n'
+    .format(emotion_label[tf.argmax(pred[0][0]).numpy()], age_label[tf.argmax(pred[1][0]).numpy()], ethinicity_label[tf.argmax(pred[2][0]).numpy()]))
+
+elif args.evaluate and not args.predict:
     #evaluate model with best learned weights
     model.load_weights('./model_data/weights/weights-50.h5')
     model.evaluate(test_batches)
