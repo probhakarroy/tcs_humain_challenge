@@ -17,14 +17,25 @@ args = parser.parse_args()
 train_batches, validation_batches, test_batches = dataset_generator.create()
 
 
-#feature extractor
-base_model = tf.keras.applications.InceptionV3(include_top = False, weights = 'imagenet')
-base_model.trainable = False
-
 #multi-task learning model
 inputs = tf.keras.layers.Input(shape = (299, 299, 3))
-x = base_model(inputs)
-x = tf.keras.layers.GlobalAveragePooling2D()(x)
+
+#feature extractor
+convnet = tf.keras.layers.Conv2D(32, (5, 5), activation='relu', padding='same')(inputs)
+convnet = tf.keras.layers.MaxPooling2D((5, 5), padding='same')(convnet)
+
+convnet = tf.keras.layers.Conv2D(64, (5, 5), activation='relu', padding='same')(convnet)
+convnet = tf.keras.layers.MaxPooling2D((5, 5), padding='same')(convnet)
+
+convnet = tf.keras.layers.Conv2D(128, (5, 5), activation='relu', padding='same')(convnet)
+convnet = tf.keras.layers.MaxPooling2D((5, 5), padding='same')(convnet)
+
+convnet = tf.keras.layers.Conv2D(64, (5, 5), activation='relu', padding='same')(convnet)
+convnet = tf.keras.layers.MaxPooling2D((5, 5), padding='same')(convnet)
+
+convnet = tf.keras.layers.Conv2D(32, (5, 5), activation='relu', padding='same')(convnet)
+x = tf.keras.layers.GlobalAveragePooling2D()(convnet)
+
 x = tf.keras.layers.Dense(128, activation = 'relu', kernel_regularizer = tf.keras.regularizers.l2())(x)
 x = tf.keras.layers.BatchNormalization()(x)
 x = tf.keras.layers.Dropout(0.2)(x)
