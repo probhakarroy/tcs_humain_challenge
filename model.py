@@ -2,7 +2,10 @@
 
 import tensorflow as tf
 from model_utils import dataset_generator
-import os, argparse
+import os, argparse, warnings
+
+#filtering tensorflow future warnings
+warnings.filterwarnings("ignore")
 
 #argument parsers
 parser = argparse.ArgumentParser(description='Multi-Task Learning Network.')
