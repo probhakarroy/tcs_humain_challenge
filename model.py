@@ -1,6 +1,7 @@
 #env/bin/python
 
 import os, argparse, warnings
+
 #filtering tensorflow future warnings
 warnings.filterwarnings("ignore")
 
@@ -94,15 +95,15 @@ model.compile(optimizer=tf.keras.optimizers.Adam(), loss = 'categorical_crossent
 if args.predict and not args.evaluate :
     #model prediction
     model.load_weights('./model_data/weights/weights-50.h5')
-    pred = model.predict(img)
-
-    #ploting the image
-    plt.imshow(img)
-    plt.show()
+    pred = model.predict(tf.expand_dims(img, 0))
 
     #prediction
     print('Prediction :-\n\tpredicted emotion : {}\n\tpredicted age : {}\n\tpredicted ethinicity : {}\n'
     .format(emotion_label[tf.argmax(pred[0][0]).numpy()], age_label[tf.argmax(pred[1][0]).numpy()], ethinicity_label[tf.argmax(pred[2][0]).numpy()]))
+
+    #ploting the image
+    plt.imshow(img)
+    plt.show()
 
 elif args.evaluate and not args.predict:
     #evaluate model with best learned weights
