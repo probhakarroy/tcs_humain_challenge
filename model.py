@@ -41,24 +41,18 @@ x = tf.keras.layers.BatchNormalization()(x)
 x = tf.keras.layers.Dropout(0.2)(x)
 
 #emotion prediction head
-emotion_pred = tf.keras.layers.Dense(64, activation = 'relu', kernel_regularizer = tf.keras.regularizers.l2())(x)
-emotion_pred = tf.keras.layers.Dropout(0.2)(emotion_pred)
-emotion_pred = tf.keras.layers.Dense(32, activation = 'relu', kernel_regularizer = tf.keras.regularizers.l2())(emotion_pred)
+emotion_pred = tf.keras.layers.Dense(32, activation = 'relu', kernel_regularizer = tf.keras.regularizers.l2())(x)
 emotion_pred = tf.keras.layers.Dropout(0.2)(emotion_pred)
 emotion_pred = tf.keras.layers.Dense(5, activation = 'softmax', name = 'emotions')(emotion_pred)
 
 #age prediction head
-age_pred = tf.keras.layers.Dense(64, activation = 'relu', kernel_regularizer = tf.keras.regularizers.l2())(x)
-age_pred = tf.keras.layers.Dropout(0.2)(age_pred)
-age_pred = tf.keras.layers.Dense(32, activation = 'relu', kernel_regularizer = tf.keras.regularizers.l2())(age_pred)
+age_pred = tf.keras.layers.Dense(32, activation = 'relu', kernel_regularizer = tf.keras.regularizers.l2())(x)
 age_pred = tf.keras.layers.Dropout(0.2)(age_pred)
 age_pred = tf.keras.layers.Dense(6, activation = 'softmax', name = 'age')(age_pred)
 
 
 #ethinicity prediction head
-ethinicity_pred = tf.keras.layers.Dense(64, activation = 'relu', kernel_regularizer = tf.keras.regularizers.l2())(x)
-ethinicity_pred = tf.keras.layers.Dropout(0.2)(ethinicity_pred)
-ethinicity_pred = tf.keras.layers.Dense(32, activation = 'relu', kernel_regularizer = tf.keras.regularizers.l2())(ethinicity_pred)
+ethinicity_pred = tf.keras.layers.Dense(32, activation = 'relu', kernel_regularizer = tf.keras.regularizers.l2())(x)
 ethinicity_pred = tf.keras.layers.Dropout(0.2)(ethinicity_pred)
 ethinicity_pred = tf.keras.layers.Dense(6, activation = 'softmax', name = 'ethinicity')(ethinicity_pred)
 
