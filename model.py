@@ -18,6 +18,8 @@ parser.add_argument('--evaluate', help = 'Evaluate the model.',
                     dest = 'evaluate', action = 'store_true')
 parser.add_argument('--train', help = 'Train the model.',
                     dest = 'evaluate', action = 'store_false')
+parser.add_argument('--epoch', help = 'No. of Epochs. [Default : 50]', default = 50, type = int)
+parser.add_argument('--epoch_weight', help='Load the weight from trained epoch. [Default : 50]', default=50, type=int)
 parser.set_defaults(predict = True, evaluate = False)
 args = parser.parse_args()
 
@@ -37,7 +39,7 @@ else :
 #multi-task learning model
 inputs = tf.keras.layers.Input(shape = (299, 299, 3))
 
-#feature extractor
+#feature extractor with 5*5 convolution weights and 5*5 max pooling layers.
 convnet = tf.keras.layers.Conv2D(32, (5, 5), activation='relu', padding='same')(inputs)
 convnet = tf.keras.layers.MaxPooling2D((5, 5), padding='same')(convnet)
 
@@ -51,8 +53,9 @@ convnet = tf.keras.layers.Conv2D(64, (5, 5), activation='relu', padding='same')(
 convnet = tf.keras.layers.MaxPooling2D((5, 5), padding='same')(convnet)
 
 convnet = tf.keras.layers.Conv2D(32, (5, 5), activation='relu', padding='same')(convnet)
-x = tf.keras.layers.GlobalAveragePooling2D()(convnet)
 
+#reducing the complexity for conv and dense connection weights with average pooling.
+x = tf.keras.layers.GlobalAveragePooling2D()(convnet)
 x = tf.keras.layers.Dense(128, activation = 'relu', kernel_regularizer = tf.keras.regularizers.l2())(x)
 x = tf.keras.layers.BatchNormalization()(x)
 x = tf.keras.layers.Dropout(0.2)(x)
@@ -76,12 +79,13 @@ ethinicity_pred = tf.keras.layers.Dense(6, activation = 'softmax', name = 'ethin
 
 model = tf.keras.models.Model(inputs = inputs , outputs = [emotion_pred, age_pred, ethinicity_pred])
 
-#callbacks
+
 try :
     os.mkdir('./tcs_fr_weights')
 except :
     print('tcs_fr_weights directory already exist!')
 
+#callbacks
 log = tf.keras.callbacks.CSVLogger('./tcs_fr_log.csv')
 checkpoint = tf.keras.callbacks.ModelCheckpoint('./tcs_fr_weights/weights-{epoch:02d}.h5', monitor = 'val_loss',
                                           save_best_only = True, save_weights_only = True, verbose = 1)
@@ -94,7 +98,7 @@ model.compile(optimizer=tf.keras.optimizers.Adam(), loss = 'categorical_crossent
 
 if args.predict and not args.evaluate :
     #model prediction
-    model.load_weights('./model_data/weights/weights-50.h5')
+    model.load_weights('./model_data/weights/weights-{}.h5'.format(args.epoch_weight))
     pred = model.predict(tf.expand_dims(img, 0))
 
     #prediction
@@ -107,10 +111,10 @@ if args.predict and not args.evaluate :
 
 elif args.evaluate and not args.predict:
     #evaluate model with best learned weights
-    model.load_weights('./model_data/weights/weights-50.h5')
+    model.load_weights('./model_data/weights/weights-{}.h5'.format(args.epoch_weight))
     model.evaluate(test_batches)
 else :
     #training the model
-    history = model.fit(train_batches, epochs = 50, validation_data = validation_batches, callbacks = [log, checkpoint, lr_decay])
+    history = model.fit(train_batches, epochs = args.epoch, validation_data = validation_batches, callbacks = [log, checkpoint, lr_decay])
     #saving the model
     model.save_weights('./weight_end_epoch')
