@@ -28,7 +28,7 @@ def create() :
   except :
     print('dataset directory already exist!')
 
-  print('\nDownloading the images and converting them tf tensors:-')
+  print('\nDownloading the images and converting them to tf tensors:-')
   for i in tqdm.tqdm(range(len(links))) :
     res = requests.get(links[i])
     res.raise_for_status()
@@ -55,7 +55,7 @@ def create() :
   all_labels = [*re_labels]
 
   #Data Augmentations
-  print('\nData Augmentations:-')
+  print('\nData Augmentations :-')
   for i in tqdm.tqdm(range(itr)):
     #random 90 deg, 180 deg, 240deg, 360deg rotations
     all_images.append(tf.image.rot90(images[i], tf.random.uniform(

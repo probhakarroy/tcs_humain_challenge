@@ -3,7 +3,7 @@ import requests, os, sys
 import tensorflow as tf
 
 def url(x):
-    print('\nDownloading the image and converting them tf tensors:-')
+    print('\nDownloading the image and converting it to tf tensors...')
     res = requests.get(x)
     res.raise_for_status()
     try:

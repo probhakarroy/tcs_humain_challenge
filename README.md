@@ -78,6 +78,33 @@ Ethinicity : {'E_Hispanic', 'E_White', 'E_Black', 'E_Asian', 'E_Indian', 5: 'oth
 ## Training
 The model was trained on Google Colab using Nvidia Tesla T4 GPU.
 
+Usage Script :-<br>
+```sh
+$python3 model.py --train
+#OR
+$python3 model.py --train --epoch 50
+```
+
+Some Epoch Metrics :-<br>
+```
+Epoch 1/50
+21/22 [===========================>..] - ETA: 1s - loss: 6.2680 - emotions_loss: 1.4739 - age_loss: 1.7252 - ethinicity_loss: 1.5602 - emotions_accuracy: 0.3333 - age_accuracy: 0.2470 - ethinicity_accuracy: 0.3929
+Epoch 00001: saving model to ./tcs_fr_weights/weights-01.h5
+22/22 [==============================] - 39s 2s/step - loss: 6.2826 - emotions_loss: 1.4719 - age_loss: 1.7199 - ethinicity_loss: 1.5878 - emotions_accuracy: 0.3438 - age_accuracy: 0.2528 - ethinicity_accuracy: 0.3835 - val_loss: 5.8135 - val_emotions_loss: 1.4673 - val_age_loss: 1.5578 - val_ethinicity_loss: 1.4182 - val_emotions_accuracy: 0.1875 - val_age_accuracy: 0.4375 - val_ethinicity_accuracy: 0.5000
+
+...
+
+Epoch 49/50
+21/22 [===========================>..] - ETA: 1s - loss: 0.9638 - emotions_loss: 0.1036 - age_loss: 0.1933 - ethinicity_loss: 0.1210 - emotions_accuracy: 0.9643 - age_accuracy: 0.9583 - ethinicity_accuracy: 0.9881
+Epoch 00049: saving model to ./tcs_fr_weights/weights-49.h5
+22/22 [==============================] - 39s 2s/step - loss: 0.9751 - emotions_loss: 0.1055 - age_loss: 0.1942 - ethinicity_loss: 0.1297 - emotions_accuracy: 0.9631 - age_accuracy: 0.9574 - ethinicity_accuracy: 0.9830 - val_loss: 3.4741 - val_emotions_loss: 0.8931 - val_age_loss: 1.2171 - val_ethinicity_loss: 0.8187 - val_emotions_accuracy: 0.6875 - val_age_accuracy: 0.6875 - val_ethinicity_accuracy: 0.8125
+Epoch 50/50
+21/22 [===========================>..] - ETA: 1s - loss: 0.9500 - emotions_loss: 0.1099 - age_loss: 0.1817 - ethinicity_loss: 0.1136 - emotions_accuracy: 0.9643 - age_accuracy: 0.9732 - ethinicity_accuracy: 0.9851
+Epoch 00050: saving model to ./tcs_fr_weights/weights-50.h5
+22/22 [==============================] - 39s 2s/step - loss: 0.9638 - emotions_loss: 0.1094 - age_loss: 0.1861 - ethinicity_loss: 0.1237 - emotions_accuracy: 0.9631 - age_accuracy: 0.9688 - ethinicity_accuracy: 0.9801 - val_loss: 3.7255 - val_emotions_loss: 0.9669 - val_age_loss: 1.2879 - val_ethinicity_loss: 0.9266 - val_emotions_accuracy: 0.6875 - val_age_accuracy: 0.6875 - val_ethinicity_accuracy: 0.7500
+
+```
+
 Model Metrics :-<br>
 ![](model_data/metrics/1.jpg)
 ![](model_data/metrics/2.jpg)
@@ -90,7 +117,7 @@ epoch - 23, 26, 49, 50 can be found in ```model_data/weights``` folder.
 
 
 ## Validation
-Best Validation Accuracy for the model :-<br>
+Best Validation Accuracy for the model for Epoch 23 :-<br>
 
 ```sh
 Emotion Accuracy : 68.75%
@@ -98,16 +125,63 @@ Age Accuracy : 81.25%
 Ethinicity : 81.25%
 ```
 
-## Test
+## Evaluate
+
+Usage Script :-<br>
+```sh
+$python3 model.py --evaluate
+#OR
+$python3 model.py --evaluate --epoch_weight 50
+```
+
 Test Metrics for the model with best epoch weights :-<br>
 
 ```sh
-loss: 5.9781 - emotions_loss: 1.5415 - age_loss: 1.9576 - ethinicity_loss: 1.9338 - emotions_accuracy: 0.6522 - age_accuracy: 0.5217 - ethinicity_accuracy: 0.5652
+$python3 model.py --evaluate
+
+...
+
+23/23 [==============================] - 2s 71ms/step - loss: 5.9781 - emotions_loss: 1.5415 - age_loss: 1.9576 - ethinicity_loss: 1.9338 - emotions_accuracy: 0.6522 - age_accuracy: 0.5217 - ethinicity_accuracy: 0.5652
 ```
 
 ## Prediction
-Sample Prediction of the model :- <br> 
+
+Usage Script :-<br>
+```sh
+$python3 model.py --predict
+#OR
+$python3 model.py --predict --epoch_weight 50
+```
+
+Sample Prediction of the model :- <br>
+```sh
+$python3 model.py --predict
+Enter Image Url : http://com.dataturks.a96-i23.open.s3.amazonaws.com/2c9fafb06477f4cb0164895548a600a3/66127d05-93eb-498f-bac3-85a19bcbbbc7___2538464.main_image.jpg.jpeg
+
+Downloading the image and converting it to tf tensors...
+Prediction :-
+        predicted emotion : Emotion_Happy
+        predicted age : Age_below20
+        predicted ethinicity : E_White
+``` 
+
+Output Screen :- <br>
 ![](model_data/prediction/pred_1.png)
+
+<br>
+
+```sh
+$python3 model.py --predict
+Enter Image Url : http://com.dataturks.a96-i23.open.s3.amazonaws.com/2c9fafb06477f4cb0164895548a600a3/e3f39fd4-8888-4eea-a49d-038f70a8c540___instagram-famous-clothing-stores.jpg.jpeg
+
+Downloading the image and converting it to tf tensors...
+Prediction :-
+        predicted emotion : Emotion_Happy
+        predicted age : Age_20_30
+        predicted ethinicity : E_Hispanic
+``` 
+
+Output Screen :- <br>
 ![](model_data/prediction/pred_2.png)
 
 

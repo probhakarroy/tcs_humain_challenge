@@ -90,7 +90,7 @@ except :
 #callbacks
 log = tf.keras.callbacks.CSVLogger('./tcs_fr_log.csv')
 checkpoint = tf.keras.callbacks.ModelCheckpoint('./tcs_fr_weights/weights-{epoch:02d}.h5', monitor = 'val_loss',
-                                          save_best_only = True, save_weights_only = True, verbose = 1)
+                                          save_best_only = False, save_weights_only = True, verbose = 1)
 lr_decay = tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', verbose = 1, factor = 0.5, patience = 3, min_lr = 0.00005)
 
 
