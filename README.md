@@ -21,7 +21,7 @@ $pip3 install --upgrade -r requirements.txt
 ```
 
 ## Usage
-```sh
+```
 $python3 model.py --help
 usage: model.py [-h] [--predict] [--evaluate] [--train] [--epoch EPOCH]
                 [--epoch_weight EPOCH_WEIGHT]
@@ -87,7 +87,7 @@ $python3 model.py --train --epoch 50
 
 Some Epoch Metrics :-<br>
 
-```sh
+```
 Epoch 1/50
 21/22 [===========================>..] - ETA: 1s - loss: 6.2680 - emotions_loss: 1.4739 - age_loss: 1.7252 - ethinicity_loss: 1.5602 - emotions_accuracy: 0.3333 - age_accuracy: 0.2470 - ethinicity_accuracy: 0.3929
 Epoch 00001: saving model to ./tcs_fr_weights/weights-01.h5
@@ -144,7 +144,7 @@ $python3 model.py --evaluate --epoch_weight 50
 
 Test Metrics for the model with best epoch weights :-<br>
 
-```sh
+```
 $python3 model.py --evaluate
 
 Loading the links :-
