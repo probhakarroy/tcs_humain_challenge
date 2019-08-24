@@ -70,7 +70,7 @@ Classes :-<br>
 ```sh
 Emotion : {'Emotion_Neutral', 'Not_Face', 'Emotion_Sad', 'Emotion_Angry', 'Emotion_Happy'}
 Age : {'Age_above_50', 'Age_30_40', 'Age_20_30', 'Age_40_50', 'Age_below20', 'others'}
-Ethinicity : {'E_Hispanic', 'E_White', 'E_Black', 'E_Asian', 'E_Indian', 5: 'others'}
+Ethinicity : {'E_Hispanic', 'E_White', 'E_Black', 'E_Asian', 'E_Indian', 'others'}
 ```
 
 
