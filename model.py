@@ -23,9 +23,11 @@ parser.add_argument('--epoch_weight', help='Load the weight from trained epoch. 
 parser.set_defaults(predict = True, evaluate = False)
 args = parser.parse_args()
 
-if args.predict :
+if args.predict and not args.evaluate :
     img = input('Enter Image Url : ')
     img = image_downloader.url(img)
+    
+    #label mapper dicts
     emotion_label = {0: 'Emotion_Neutral', 1: 'Not_Face',
                      2: 'Emotion_Sad', 3: 'Emotion_Angry', 4: 'Emotion_Happy'}
     age_label = {0: 'Age_above_50', 1: 'Age_30_40', 2: 'Age_20_30',
