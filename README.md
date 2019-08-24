@@ -48,8 +48,8 @@ The dataset generator script [dataset_generator.py] in model_utils is used to pa
 json file and download the images then reshape and covert them to tf.Tensor of shape ```299 x 299 x 3``` and also parse the labels and encode them to one-hot vectors.<br>
 
 Some Data Samples :- <br>
-![](model_data/samples/1.jpeg)
-![](model_data/samples/2.jpeg)
+![](model_data/samples/1.jpeg) {.center}
+![](model_data/samples/2.jpeg) {.center}
 <br>
 
 Two datapoints out of 120 datapoints cannot be decoded using TensorFlow hence 118 images 
@@ -73,7 +73,7 @@ Ethinicity : {'E_Hispanic', 'E_White', 'E_Black', 'E_Asian', 'E_Indian', 5: 'oth
 
 
 ## Model Architecture
-![](model_data/model.png)
+![](model_data/model.png) {.center}
 
 
 ## Training
