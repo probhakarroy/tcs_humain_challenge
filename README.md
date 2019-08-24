@@ -102,6 +102,12 @@ Test Metrics for the model with best epoch weights :-<br>
 loss: 5.9781 - emotions_loss: 1.5415 - age_loss: 1.9576 - ethinicity_loss: 1.9338 - emotions_accuracy: 0.6522 - age_accuracy: 0.5217 - ethinicity_accuracy: 0.5652
 ```
 
+###Prediction
+Sample Prediction of the model :- <br> 
+![](model_data/prediction/pred_1.jpg)
+![](model_data/prediction/pred_2.jpg)
+
+
 ```sh
 Tested In Ubuntu-19.04 with Python 3.7.3.
 ```
