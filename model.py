@@ -19,7 +19,7 @@ parser.add_argument('--evaluate', help = 'Evaluate the model.',
 parser.add_argument('--train', help = 'Train the model.',
                     dest = 'evaluate', action = 'store_false')
 parser.add_argument('--epoch', help = 'No. of Epochs. [Default : 50]', default = 50, type = int)
-parser.add_argument('--epoch_weight', help='Load the weight from trained epoch. [Default : 50]', default=50, type=int)
+parser.add_argument('--epoch_weight', help='Load the weight from trained epoch. [Choices : 23, 26, 49, 50] [Default : 50]', default=50, type=int)
 parser.set_defaults(predict = True, evaluate = False)
 args = parser.parse_args()
 
