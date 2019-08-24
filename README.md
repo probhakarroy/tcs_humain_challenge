@@ -70,9 +70,11 @@ Age : {'Age_above_50', 'Age_30_40', 'Age_20_30', 'Age_40_50', 'Age_below20', 'ot
 Ethinicity : {'E_Hispanic', 'E_White', 'E_Black', 'E_Asian', 'E_Indian', 5: 'others'}
 ```
 
+<br>
 ##Model Architecture
 ![](model_data/model.png)<br>
 
+<br>
 ##Training
 The model was trained on Google Colab using Nvidia Tesla T4 GPU.
 
@@ -86,6 +88,7 @@ Model Metrics :-<br>
 Saved trained epoch weights of the model with best validation accuracies for the
 epoch - 23, 26, 49, 50 can be found in ```sh model_data/weights``` folder. 
 
+<br>
 ##Validation
 Best Validation Accuracy for the model :-<br>
 
@@ -95,6 +98,7 @@ Age Accuracy : 81.25%
 Ethinicity : 81.25%
 ```
 
+<br>
 ##Test
 Test Metrics for the model with best epoch weights :-<br>
 
@@ -102,6 +106,7 @@ Test Metrics for the model with best epoch weights :-<br>
 loss: 5.9781 - emotions_loss: 1.5415 - age_loss: 1.9576 - ethinicity_loss: 1.9338 - emotions_accuracy: 0.6522 - age_accuracy: 0.5217 - ethinicity_accuracy: 0.5652
 ```
 
+<br>
 ##Prediction
 Sample Prediction of the model :- <br> 
 ![](model_data/prediction/pred_1.png)
