@@ -110,8 +110,7 @@ if args.predict and not args.evaluate :
     #ploting the image
     plt.imshow(img)
     plt.show()
-
-elif args.evaluate and not args.predict:
+elif args.evaluate and args.predict :
     #evaluate model with best learned weights
     model.load_weights('./model_data/weights/weights-{}.h5'.format(args.epoch_weight))
     model.evaluate(test_batches)
