@@ -42,14 +42,14 @@ optional arguments:
 A Multi-Task Deep Learning Network For Emotion, Age, Ethinicity Classification trained 
 using the dataset provided by TCS of 120 labeled images [Face_Recognition.json] using TensorFlow.
 
-###Dataset
+##Dataset
 The dataset was provided by TCS HumAIn in a JSON File.<br>
 The dataset generator script [dataset_generator.py] in model_utils is used to parse the 
 json file and download the images then reshape and covert them to tf.Tensor of shape ```299 x 299 x 3``` and also parse the labels and encode them to one-hot vectors.<br>
 
 Some Data Samples :- <br>
-![](model_data/samples/1.jpeg =299x299)
-![](model_data/samples/2.jpeg =299x299)<br>
+![](model_data/samples/1.jpeg)
+![](model_data/samples/2.jpeg)<br>
 
 Two datapoints out of 120 datapoints cannot be decoded using TensorFlow hence 118 images 
 were processed with tensorflow and then data augmented to produce 472 datapoints and then
@@ -70,10 +70,10 @@ Age : {'Age_above_50', 'Age_30_40', 'Age_20_30', 'Age_40_50', 'Age_below20', 'ot
 Ethinicity : {'E_Hispanic', 'E_White', 'E_Black', 'E_Asian', 'E_Indian', 5: 'others'}
 ```
 
-###Model Architecture
+##Model Architecture
 ![](model_data/model.png)<br>
 
-###Training
+##Training
 The model was trained on Google Colab using Nvidia Tesla T4 GPU.
 
 Model Metrics :-<br>
@@ -86,7 +86,7 @@ Model Metrics :-<br>
 Saved trained epoch weights of the model with best validation accuracies for the
 epoch - 23, 26, 49, 50 can be found in ```sh model_data/weights``` folder. 
 
-###Validation
+##Validation
 Best Validation Accuracy for the model :-<br>
 
 ```sh
@@ -95,17 +95,17 @@ Age Accuracy : 81.25%
 Ethinicity : 81.25%
 ```
 
-###Test
+##Test
 Test Metrics for the model with best epoch weights :-<br>
 
 ```sh
 loss: 5.9781 - emotions_loss: 1.5415 - age_loss: 1.9576 - ethinicity_loss: 1.9338 - emotions_accuracy: 0.6522 - age_accuracy: 0.5217 - ethinicity_accuracy: 0.5652
 ```
 
-###Prediction
+##Prediction
 Sample Prediction of the model :- <br> 
-![](model_data/prediction/pred_1.jpg)
-![](model_data/prediction/pred_2.jpg)
+![](model_data/prediction/pred_1.png)
+![](model_data/prediction/pred_2.png)
 
 
 ```sh
