@@ -21,7 +21,7 @@ $pip3 install --upgrade -r requirements.txt
 ```
 
 ## Usage
-```sh
+```
 $python3 model.py --help
 usage: model.py [-h] [--predict] [--evaluate] [--train] [--epoch EPOCH]
                 [--epoch_weight EPOCH_WEIGHT]
@@ -57,7 +57,7 @@ were processed with tensorflow and then data augmented to produce 472 datapoints
 used to create three tf.data.Dataset input pipeline for training, validation and testing
 of the tensorflow model.
 
-```sh
+```
   Total no. of datapoints after data augmentation : 472
 	Total no. of datapoints in train set : 354
 	Total no. of datapoints in validation set : 94
