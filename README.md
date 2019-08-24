@@ -15,8 +15,10 @@
 > Multi-Task Deep Learning Network For Emotion, Age, Ethinicity Classification.<br>
 > Created For TCS HumAIn Challenge.
 
+### 🏠 [Homepage](https://probhakarroy.github.io/tcs_humain_challenge/)
+
 ## Install Dependancy
-```sh
+```
 $pip3 install --upgrade -r requirements.txt
 ```
 
