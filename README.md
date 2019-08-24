@@ -86,7 +86,7 @@ Model Metrics :-<br>
 ![](model_data/metrics/5.jpg)
 
 Saved trained epoch weights of the model with best validation accuracies for the
-epoch - 23, 26, 49, 50 can be found in ```sh model_data/weights``` folder. 
+epoch - 23, 26, 49, 50 can be found in ```model_data/weights``` folder. 
 
 
 ## Validation
