@@ -21,7 +21,7 @@ $pip3 install --upgrade -r requirements.txt
 ```
 
 ## Usage
-```
+```sh
 $python3 model.py --help
 usage: model.py [-h] [--predict] [--evaluate] [--train] [--epoch EPOCH]
                 [--epoch_weight EPOCH_WEIGHT]
@@ -147,7 +147,20 @@ Test Metrics for the model with best epoch weights :-<br>
 ```sh
 $python3 model.py --evaluate
 
-...
+Loading the links :-
+100%|██████████████████████████████████████████████████████████████████████| 120/120 [00:00<00:00, 268722.09it/s]
+
+Downloading the images and converting them to tf tensors:-
+100%|██████████████████████████████████████████████████████████████████████| 119/119 [02:11<00:00,  1.11s/it]
+
+Data Augmentations:-
+100%|██████████████████████████████████████████████████████████████████████| 118/118 [00:01<00:00, 97.08it/s]
+
+
+	Total no. of datapoints after data augmentation : 472
+	Total no. of datapoints in train set : 354
+	Total no. of datapoints in validation set : 94
+	Total no. of datapoints in test set : 23
 
 23/23 [==============================] - 2s 71ms/step - loss: 5.9781 - emotions_loss: 1.5415 - age_loss: 1.9576 - ethinicity_loss: 1.9338 - emotions_accuracy: 0.6522 - age_accuracy: 0.5217 - ethinicity_accuracy: 0.5652
 ```
