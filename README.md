@@ -12,7 +12,7 @@
   </a>
 </p>
 
-> Multi-Task Deep Learning Network For Emotion, Age, Ethinicity Classification.
+> Multi-Task Deep Learning Network For Emotion, Age, Ethinicity Classification.<br>
 > Created For TCS HumAIn Challenge.
 
 ## Install Dependancy
