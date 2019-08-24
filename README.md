@@ -86,11 +86,19 @@ $python3 model.py --train --epoch 50
 ```
 
 Some Epoch Metrics :-<br>
-```
+
+```sh
 Epoch 1/50
 21/22 [===========================>..] - ETA: 1s - loss: 6.2680 - emotions_loss: 1.4739 - age_loss: 1.7252 - ethinicity_loss: 1.5602 - emotions_accuracy: 0.3333 - age_accuracy: 0.2470 - ethinicity_accuracy: 0.3929
 Epoch 00001: saving model to ./tcs_fr_weights/weights-01.h5
 22/22 [==============================] - 39s 2s/step - loss: 6.2826 - emotions_loss: 1.4719 - age_loss: 1.7199 - ethinicity_loss: 1.5878 - emotions_accuracy: 0.3438 - age_accuracy: 0.2528 - ethinicity_accuracy: 0.3835 - val_loss: 5.8135 - val_emotions_loss: 1.4673 - val_age_loss: 1.5578 - val_ethinicity_loss: 1.4182 - val_emotions_accuracy: 0.1875 - val_age_accuracy: 0.4375 - val_ethinicity_accuracy: 0.5000
+
+...
+
+Epoch 23/50
+21/22 [===========================>..] - ETA: 1s - loss: 1.1570 - emotions_loss: 0.1428 - age_loss: 0.2857 - ethinicity_loss: 0.1560 - emotions_accuracy: 0.9554 - age_accuracy: 0.9167 - ethinicity_accuracy: 0.9673
+Epoch 00023: saving model to ./tcs_fr_weights/weights-23.h5
+22/22 [==============================] - 38s 2s/step - loss: 1.1737 - emotions_loss: 0.1398 - age_loss: 0.2891 - ethinicity_loss: 0.1723 - emotions_accuracy: 0.9574 - age_accuracy: 0.9148 - ethinicity_accuracy: 0.9602 - val_loss: 3.0625 - val_emotions_loss: 0.7331 - val_age_loss: 0.9864 - val_ethinicity_loss: 0.7717 - val_emotions_accuracy: 0.6875 - val_age_accuracy: 0.8125 - val_ethinicity_accuracy: 0.8125
 
 ...
 
