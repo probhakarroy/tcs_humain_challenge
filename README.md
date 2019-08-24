@@ -12,7 +12,7 @@
   </a>
 </p>
 
-> Multi-Task Deep Learning Network For Emotion, Age, Ethinicity Classification.<br>
+> Deep Multi-Task Learning Network For Emotion, Age, Ethinicity Classification.<br>
 > Created For TCS HumAIn Challenge.
 
 ### 🏠 [Homepage](https://probhakarroy.github.io/tcs_humain_challenge/)
@@ -41,7 +41,7 @@ optional arguments:
                         49, 50] [Default : 50]
 ```
 
-A Multi-Task Deep Learning Network For Emotion, Age, Ethinicity Classification trained 
+A Deep Multi-Task Learning Network For Emotion, Age, Ethinicity Classification trained 
 using the dataset provided by TCS of 120 labeled images [Face_Recognition.json] using TensorFlow.
 
 ## Dataset
