@@ -57,7 +57,7 @@ def create() :
   #Data Augmentations
   print('\nData Augmentations :-')
   for i in tqdm.tqdm(range(itr)):
-    #random 90 deg, 180 deg, 240deg, 360deg rotations
+    #random 90 deg, 180 deg, 270 deg, 360deg rotations
     all_images.append(tf.image.rot90(images[i], tf.random.uniform(
         shape=[], minval=0, maxval=4, dtype=tf.int32)))
     all_labels.append(re_labels[i])
