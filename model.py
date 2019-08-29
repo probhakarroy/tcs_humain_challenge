@@ -83,13 +83,13 @@ model = tf.keras.models.Model(inputs = inputs , outputs = [emotion_pred, age_pre
 
 
 try :
-    os.mkdir('./tcs_fr_weights')
+    os.mkdir('tcs_fr_weights')
 except :
     print('tcs_fr_weights directory already exist!')
 
 #callbacks
-log = tf.keras.callbacks.CSVLogger('./tcs_fr_log.csv')
-checkpoint = tf.keras.callbacks.ModelCheckpoint('./tcs_fr_weights/weights-{epoch:02d}.h5', monitor = 'val_loss',
+log = tf.keras.callbacks.CSVLogger('tcs_fr_log.csv')
+checkpoint = tf.keras.callbacks.ModelCheckpoint(os.path.join('tcs_fr_weights', 'weights-{epoch:02d}.h5'), monitor = 'val_loss',
                                           save_best_only = False, save_weights_only = True, verbose = 1)
 lr_decay = tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', verbose = 1, factor = 0.5, patience = 3, min_lr = 0.00005)
 
@@ -100,7 +100,7 @@ model.compile(optimizer=tf.keras.optimizers.Adam(), loss = 'categorical_crossent
 
 if args.predict and not args.evaluate :
     #model prediction
-    model.load_weights('./model_data/weights/weights-{}.h5'.format(args.epoch_weight))
+    model.load_weights(os.path.join('model_data', 'weights', 'weights-{}.h5').format(args.epoch_weight))
     pred = model.predict(tf.expand_dims(img, 0))
 
     #prediction
@@ -112,10 +112,11 @@ if args.predict and not args.evaluate :
     plt.show()
 elif args.evaluate and args.predict :
     #evaluate model with best learned weights
-    model.load_weights('./model_data/weights/weights-{}.h5'.format(args.epoch_weight))
+    model.load_weights(os.path.join('model_data', 'weights',
+                                    'weights-{}.h5').format(args.epoch_weight))
     model.evaluate(test_batches)
 else :
     #training the model
     history = model.fit(train_batches, epochs = args.epoch, validation_data = validation_batches, callbacks = [log, checkpoint, lr_decay])
     #saving the model
-    model.save_weights('./weight_end_epoch')
+    model.save_weights('weight_end_epoch')
