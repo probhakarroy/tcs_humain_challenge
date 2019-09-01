@@ -179,7 +179,7 @@ $python3 model.py --predict --epoch_weight 50
 Sample Prediction of the model :- <br>
 ```sh
 $python3 model.py --predict
-Enter Image Url : http://com.dataturks.a96-i23.open.s3.amazonaws.com/2c9fafb06477f4cb0164895548a600a3/66127d05-93eb-498f-bac3-85a19bcbbbc7___2538464.main_image.jpg.jpeg
+Enter Image Path/Url : http://com.dataturks.a96-i23.open.s3.amazonaws.com/2c9fafb06477f4cb0164895548a600a3/66127d05-93eb-498f-bac3-85a19bcbbbc7___2538464.main_image.jpg.jpeg
 
 Downloading the image and converting it to tf tensors...
 Prediction :-
@@ -195,9 +195,9 @@ Output Screen :- <br>
 
 ```sh
 $python3 model.py --predict
-Enter Image Url : http://com.dataturks.a96-i23.open.s3.amazonaws.com/2c9fafb06477f4cb0164895548a600a3/e3f39fd4-8888-4eea-a49d-038f70a8c540___instagram-famous-clothing-stores.jpg.jpeg
+Enter Image Path/Url : http://com.dataturks.a96-i23.open.s3.amazonaws.com/2c9fafb06477f4cb0164895548a600a3/e3f39fd4-8888-4eea-a49d-038f70a8c540___instagram-famous-clothing-stores.jpg.jpeg
 
-Downloading the image and converting it to tf tensors...
+Downloading/Opening the image and converting it to tf tensors...
 Prediction :-
         predicted emotion : Emotion_Happy
         predicted age : Age_20_30
