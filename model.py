@@ -24,8 +24,8 @@ parser.set_defaults(predict = True, evaluate = False)
 args = parser.parse_args()
 
 if args.predict and not args.evaluate :
-    img = input('Enter Image Url : ')
-    img = image_downloader.url(img)
+    img = input('Enter Image Path/Url : ')
+    img = image_downloader.path(img)
     
     #label mapper dicts
     emotion_label = {0: 'Emotion_Neutral', 1: 'Not_Face',
