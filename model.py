@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 
 #argument parsers
 parser = argparse.ArgumentParser(description = 'Multi-Task Learning Network.')
-parser.add_argument('--predict', help = 'Use the model to predict an image from url.',
+parser.add_argument('--predict', help = 'Use the model to predict an image from path or url.',
                     dest = 'predict', action = 'store_true')
 parser.add_argument('--evaluate', help = 'Evaluate the model.',
                     dest = 'evaluate', action = 'store_true')

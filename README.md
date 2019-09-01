@@ -32,7 +32,7 @@ Multi-Task Learning Network.
 
 optional arguments:
   -h, --help            show this help message and exit
-  --predict             Use the model to predict an image from url.
+  --predict             Use the model to predict an image from path or url.
   --evaluate            Evaluate the model.
   --train               Train the model.
   --epoch EPOCH         No. of Epochs. [Default : 50]
