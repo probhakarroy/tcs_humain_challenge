@@ -132,7 +132,7 @@ Best Validation Accuracy for the model for Epoch 23 :-<br>
 ```sh
 Emotion Accuracy : 68.75%
 Age Accuracy : 81.25%
-Ethinicity : 81.25%
+Ethinicity Accuracy : 81.25%
 ```
 
 ## Evaluate
