@@ -12,7 +12,7 @@
   </a>
 </p>
 
-> Deep Multi-Task Learning Network For Emotion, Age, Ethinicity Classification.<br>
+> Deep Multi-Task Learning Network For Emotion, Age, Ethnicity Classification.<br>
 > Created For TCS HumAIn Challenge.
 
 ### 🏠 [Homepage](https://probhakarroy.github.io/tcs_humain_challenge/)
@@ -41,7 +41,7 @@ optional arguments:
                         49, 50] [Default : 50]
 ```
 
-A Deep Multi-Task Learning Network For Emotion, Age, Ethinicity Classification trained 
+A Deep Multi-Task Learning Network For Emotion, Age, Ethnicity Classification trained 
 using the dataset provided by TCS of 120 labeled images [Face_Recognition.json] using TensorFlow.
 
 ## Dataset
@@ -70,7 +70,7 @@ Classes :-<br>
 ```sh
 Emotion : {'Emotion_Neutral', 'Not_Face', 'Emotion_Sad', 'Emotion_Angry', 'Emotion_Happy'}
 Age : {'Age_above_50', 'Age_30_40', 'Age_20_30', 'Age_40_50', 'Age_below20', 'others'}
-Ethinicity : {'E_Hispanic', 'E_White', 'E_Black', 'E_Asian', 'E_Indian', 'others'}
+Ethnicity : {'E_Hispanic', 'E_White', 'E_Black', 'E_Asian', 'E_Indian', 'others'}
 ```
 
 
@@ -132,7 +132,7 @@ Best Validation Accuracy for the model for Epoch 23 :-<br>
 ```sh
 Emotion Accuracy : 68.75%
 Age Accuracy : 81.25%
-Ethinicity Accuracy : 81.25%
+Ethnicity Accuracy : 81.25%
 ```
 
 ## Evaluate
