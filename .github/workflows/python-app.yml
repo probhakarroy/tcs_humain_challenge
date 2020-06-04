@@ -1,0 +1,46 @@
+name: Python application
+
+on:
+  push:
+    branches: [ dev/* ]
+  pull_request:
+    branches: [ master, develop ]
+
+jobs:
+  existing-model:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Predicting with existing model
+      run: python3 model.py --predict
+
+  experimental-test-evaluate-predict:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Train Model
+      run: python3 model.py --train --epoch 10
+    - name: Evaluate
+      run: python3 model.py --evaluate --epoch_weight 10
+    - name: Predict Model
+      run: python3 model.py --predict --epoch_weight 10
